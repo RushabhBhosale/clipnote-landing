@@ -156,7 +156,7 @@ const DEMOS: Demo[] = [
         icon: ScissorsIcon,
         copyText: JSON.stringify(JSON.parse(JSON_COPY)),
         output: (
-          <div className="break-all font-mono text-[13px] leading-6 text-zinc-300">
+          <div className="whitespace-pre-wrap break-words font-mono text-[13px] leading-6 text-zinc-300">
             <span className="text-zinc-500">{"{"}</span>
             <span className="text-[#7db4ff]">&quot;user&quot;</span>
             <span className="text-zinc-500">:{"{"}</span>
@@ -215,7 +215,7 @@ const DEMOS: Demo[] = [
     badge: "JWT detected",
     from: "Copied from your terminal",
     clip: (
-      <pre className="break-all font-mono text-[12.5px] leading-6 text-zinc-300">
+      <pre className="whitespace-pre-wrap break-words font-mono text-[12.5px] leading-6 text-zinc-300">
         <span className="text-[#c792ea]">{JWT_COPY.slice(0, 36)}</span>
         <span className="text-zinc-500">.</span>
         <span className="text-[#7ed28b]">{JWT_COPY.slice(36, 90)}</span>
@@ -320,7 +320,7 @@ const DEMOS: Demo[] = [
     badge: "URL detected",
     from: "Copied from your browser",
     clip: (
-      <pre className="break-all font-mono text-[13px] leading-6 text-zinc-300">
+      <pre className="whitespace-pre-wrap break-words font-mono text-[13px] leading-6 text-zinc-300">
         <span className="text-[#7db4ff]">https://</span>
         <span className="text-zinc-300">example.com</span>
         <span className="text-zinc-500">/products</span>
@@ -367,7 +367,7 @@ const DEMOS: Demo[] = [
         icon: ScissorsIcon,
         copyText: "https://example.com/products?id=123",
         output: (
-          <div className="break-all font-mono text-[13px] leading-6 text-zinc-300">
+          <div className="whitespace-pre-wrap break-words font-mono text-[13px] leading-6 text-zinc-300">
             <span className="text-[#7db4ff]">https://</span>
             <span className="text-zinc-300">example.com</span>
             <span className="text-zinc-500">/products</span>
@@ -386,7 +386,7 @@ const DEMOS: Demo[] = [
         copyText:
           "https%3A%2F%2Fexample.com%2Fproducts%3Fid%3D123%26utm_source%3Dtest",
         output: (
-          <div className="break-all font-mono text-[13px] leading-6 text-zinc-300">
+          <div className="whitespace-pre-wrap break-words font-mono text-[13px] leading-6 text-zinc-300">
             <span className="text-[#7db4ff]">
               https%3A%2F%2Fexample.com%2Fproducts%3Fid%3D123
             </span>
@@ -402,7 +402,7 @@ const DEMOS: Demo[] = [
         icon: LinkIcon,
         copyText: URL_COPY,
         output: (
-          <div className="break-all font-mono text-[13px] leading-6 text-zinc-300">
+          <div className="whitespace-pre-wrap break-words font-mono text-[13px] leading-6 text-zinc-300">
             <span className="text-[#7db4ff]">https://</span>
             <span className="text-zinc-300">example.com</span>
             <span className="text-zinc-500">/products</span>
@@ -507,7 +507,7 @@ export function DemoSection() {
 
         <div className="grid md:grid-cols-2">
           {/* Left: clipboard item */}
-          <div className="border-b border-white/[0.06] md:border-b-0 md:border-r">
+          <div className="min-w-0 border-b border-white/[0.06] md:border-b-0 md:border-r">
             <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-2.5">
               <span className="text-[11px] font-medium uppercase tracking-wider text-zinc-500">
                 Clipboard
@@ -526,7 +526,7 @@ export function DemoSection() {
           </div>
 
           {/* Right: detection + actions */}
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-2.5">
               <span className="text-[11px] font-medium uppercase tracking-wider text-zinc-500">
                 ClipNote

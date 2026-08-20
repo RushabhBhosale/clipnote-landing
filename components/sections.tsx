@@ -1,5 +1,6 @@
 import { PlatformButton } from "@/components/download-buttons";
 import {
+  AppleIcon,
   ArrowDownIcon,
   BracesIcon,
   CheckIcon,
@@ -9,9 +10,11 @@ import {
   KeyRoundIcon,
   ScissorsIcon,
   SparkIcon,
+  StampIcon,
   TerminalIcon,
   UserXIcon,
   WifiOffIcon,
+  WindowsIcon,
   ZapIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/logo";
@@ -38,7 +41,11 @@ function SectionHeading({
       <h2 className="text-balance text-3xl font-semibold tracking-tight text-zinc-100 sm:text-4xl">
         {title}
       </h2>
-      {sub && <p className="mt-4 text-pretty text-base leading-7 text-zinc-400">{sub}</p>}
+      {sub && (
+        <p className="mt-4 text-pretty text-base leading-7 text-zinc-400">
+          {sub}
+        </p>
+      )}
     </div>
   );
 }
@@ -46,10 +53,26 @@ function SectionHeading({
 /* ---------------- Workflow ---------------- */
 
 const STEPS = [
-  { n: "01", title: "Copy", desc: "Anything — from a terminal, an API response, or the browser." },
-  { n: "02", title: "ClipNote detects it", desc: "JSON, JWT, URL, Base64, timestamp — recognized instantly." },
-  { n: "03", title: "Choose an action", desc: "Format, decode, transform, search — one click away." },
-  { n: "04", title: "Copy the result", desc: "The output is on your clipboard before you blink." },
+  {
+    n: "01",
+    title: "Copy",
+    desc: "Anything — from a terminal, an API response, or the browser.",
+  },
+  {
+    n: "02",
+    title: "ClipNote detects it",
+    desc: "JSON, JWT, URL, Base64, timestamp — recognized instantly.",
+  },
+  {
+    n: "03",
+    title: "Choose an action",
+    desc: "Format, decode, transform, search — one click away.",
+  },
+  {
+    n: "04",
+    title: "Copy the result",
+    desc: "The output is on your clipboard before you blink.",
+  },
 ];
 
 export function WorkflowSection() {
@@ -61,8 +84,9 @@ export function WorkflowSection() {
           title="Stop opening random browser tools."
           sub={
             <>
-              JSON formatter. JWT decoder. Base64 converter. Timestamp converter.
-              URL parser. They shouldn&apos;t each require a separate website.
+              JSON formatter. JWT decoder. Base64 converter. Timestamp
+              converter. URL parser. They shouldn&apos;t each require a separate
+              website.
             </>
           }
         />
@@ -70,7 +94,9 @@ export function WorkflowSection() {
         <ol className="mt-14 grid gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
             <li key={step.n} className="relative bg-[#0d0d11] p-6">
-              <span className="font-mono text-[12px] text-zinc-600">{step.n}</span>
+              <span className="font-mono text-[12px] text-zinc-600">
+                {step.n}
+              </span>
               <div className="mt-8 flex items-center gap-2">
                 <span className="size-6 rounded-md border border-[#6f7bff]/30 bg-[#6f7bff]/10 grid place-items-center">
                   {i === 0 ? (
@@ -85,7 +111,9 @@ export function WorkflowSection() {
                 </span>
                 <h3 className="font-medium text-zinc-100">{step.title}</h3>
               </div>
-              <p className="mt-3 text-sm leading-6 text-zinc-500">{step.desc}</p>
+              <p className="mt-3 text-sm leading-6 text-zinc-500">
+                {step.desc}
+              </p>
               {i < STEPS.length - 1 && (
                 <ArrowDownIcon className="absolute -bottom-3 left-1/2 z-10 size-5 -translate-x-1/2 rounded-full border border-white/10 bg-[#141419] text-zinc-500 sm:hidden" />
               )}
@@ -192,37 +220,16 @@ const FEATURES: {
   items: Feature[];
   span: string;
   mono?: boolean;
+  wide?: boolean;
 }[] = [
   {
     icon: ClipboardIcon,
     title: "Clipboard",
     tag: "history",
-    blurb: "A searchable history of everything you copied, with smart detection built in.",
+    blurb:
+      "A searchable history of everything you copied, with smart detection built in.",
     items: ["History", "Search", "Pin", "Quick copy", "Smart detection"],
     span: "lg:col-span-2",
-  },
-  {
-    icon: BracesIcon,
-    title: "Developer Tools",
-    tag: "for devs",
-    blurb: "Decode, inspect, and transform the data types developers copy all day.",
-    items: [
-      "JSON formatter",
-      "JSON tree view",
-      "JSON search",
-      "JSON minify",
-      "JSON validation",
-      "JWT decoder",
-      "URL parser",
-      "URL encode/decode",
-      "Base64 encode/decode",
-      "Timestamp converter",
-      "Regex tester",
-      "UUID generator",
-      "Hash generator",
-    ],
-    span: "lg:col-span-2",
-    mono: true,
   },
   {
     icon: ScissorsIcon,
@@ -247,14 +254,39 @@ const FEATURES: {
     span: "lg:col-span-1",
   },
   {
+    icon: BracesIcon,
+    title: "Developer Tools",
+    tag: "for devs",
+    blurb:
+      "Decode, inspect, and transform the data types developers copy all day.",
+    items: [
+      "JSON formatter",
+      "JSON tree view",
+      "JSON search",
+      "JSON minify",
+      "JSON validation",
+      "JWT decoder",
+      "URL parser",
+      "URL encode/decode",
+      "Base64 encode/decode",
+      "Timestamp converter",
+      "Regex tester",
+      "UUID generator",
+      "Hash generator",
+    ],
+    span: "lg:col-span-2",
+    mono: true,
+  },
+  {
     icon: KeyRoundIcon,
     title: "Credentials Shortcut",
     tag: "local only",
     blurb:
       "Access credentials you save the same way you&apos;d use a password manager — stored only on your machine.",
     items: ["Local credential storage", "Quick shortcut access"],
-    span: "lg:col-span-1",
+    span: "md:col-span-2 lg:col-span-3",
     mono: true,
+    wide: true,
   },
 ];
 
@@ -268,41 +300,160 @@ export function FeaturesSection() {
           sub="One shortcut away instead of a dozen browser tabs you open and forget."
         />
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => {
             const Icon = f.icon;
+            const header = (
+              <div className="flex shrink-0 items-center gap-3">
+                <div className="grid size-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-[#a5b0ff]">
+                  <Icon className="size-4.5" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-zinc-100">{f.title}</h3>
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-600">
+                    {f.tag}
+                  </p>
+                </div>
+              </div>
+            );
+            const chips = (
+              <ul className={`flex flex-wrap gap-2 ${f.wide ? "" : "mt-5"}`}>
+                {f.items.map((item) => (
+                  <li
+                    key={item}
+                    className={`inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.02] px-2.5 py-1 text-[12.5px] ${
+                      f.mono ? "font-mono text-zinc-400" : "text-zinc-300"
+                    }`}
+                  >
+                    {!f.mono && <CheckIcon className="size-3 text-[#7ed28b]" />}
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            );
             return (
               <div
                 key={f.title}
                 className={`group rounded-xl border border-white/[0.08] bg-[#0d0d11] p-6 transition-colors hover:border-white/[0.14] ${f.span}`}
+              >
+                {f.wide ? (
+                  <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
+                      {header}
+                      <p className="text-sm leading-6 text-zinc-500 lg:max-w-md">
+                        {f.blurb}
+                      </p>
+                    </div>
+                    {chips}
+                  </div>
+                ) : (
+                  <>
+                    {header}
+                    <p className="mt-4 text-sm leading-6 text-zinc-500">
+                      {f.blurb}
+                    </p>
+                    {chips}
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Shortcuts ---------------- */
+
+const SHORTCUTS: {
+  icon: typeof ClipboardIcon;
+  title: string;
+  desc: string;
+  mac: string[];
+  win: string[];
+}[] = [
+  {
+    icon: StampIcon,
+    title: "Sticky Note",
+    desc: "Jot something down instantly, from anywhere on your machine.",
+    mac: ["⌘", "Shift", "Space"],
+    win: ["Ctrl", "Shift", "Space"],
+  },
+  {
+    icon: ClipboardIcon,
+    title: "Clipboard",
+    desc: "Open your clipboard history and search everything you copied.",
+    mac: ["⌘", "Shift", "V"],
+    win: ["Ctrl", "Shift", "V"],
+  },
+  {
+    icon: KeyRoundIcon,
+    title: "Credentials",
+    desc: "Reach saved credentials the same way you use a password manager.",
+    mac: ["⌘", "Shift", ","],
+    win: ["Ctrl", "Shift", ","],
+  },
+];
+
+function KeyCap({ children }: { children: React.ReactNode }) {
+  return (
+    <kbd className="inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] px-2 font-mono text-[12px] text-zinc-200 shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_1px_2px_rgba(0,0,0,0.4)]">
+      {children}
+    </kbd>
+  );
+}
+
+export function ShortcutsSection() {
+  return (
+    <section id="shortcuts" className="border-b border-white/[0.06] py-24">
+      <div className="mx-auto w-full max-w-[1120px] px-6">
+        <SectionHeading
+          eyebrow="Shortcuts"
+          title="Everything, one keystroke away."
+          sub="No more hunting through windows and tabs. These global shortcuts work anywhere on your machine."
+        />
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
+          {SHORTCUTS.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.title}
+                className="rounded-xl border border-white/[0.08] bg-[#0d0d11] p-6 transition-colors hover:border-white/[0.14]"
               >
                 <div className="flex items-center gap-3">
                   <div className="grid size-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-[#a5b0ff]">
                     <Icon className="size-4.5" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-zinc-100">{f.title}</h3>
+                    <h3 className="font-medium text-zinc-100">{s.title}</h3>
                     <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-600">
-                      {f.tag}
+                      Global shortcut
                     </p>
                   </div>
                 </div>
-                <p className="mt-4 text-sm leading-6 text-zinc-500">{f.blurb}</p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {f.items.map((item) => (
-                    <li
-                      key={item}
-                      className={`inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.02] px-2.5 py-1 text-[12.5px] ${
-                        f.mono ? "font-mono text-zinc-400" : "text-zinc-300"
-                      }`}
-                    >
-                      {!f.mono && (
-                        <CheckIcon className="size-3 text-[#7ed28b]" />
-                      )}
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+
+                <p className="mt-4 text-sm leading-6 text-zinc-500">{s.desc}</p>
+
+                <div className="mt-5 space-y-2.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <AppleIcon className="size-3.5 shrink-0 text-zinc-600" />
+                    <span className="flex flex-wrap gap-1.5">
+                      {s.mac.map((k) => (
+                        <KeyCap key={k}>{k}</KeyCap>
+                      ))}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <WindowsIcon className="size-3.5 shrink-0 text-zinc-600" />
+                    <span className="flex flex-wrap gap-1.5">
+                      {s.win.map((k) => (
+                        <KeyCap key={k}>{k}</KeyCap>
+                      ))}
+                    </span>
+                  </div>
+                </div>
               </div>
             );
           })}
@@ -324,7 +475,7 @@ function InstallCard({
   platform: "mac" | "windows";
   title: string;
   icon: React.ReactNode;
-  steps: { label: string; detail?: string }[];
+  steps: { label: string; detail?: string; code?: string }[];
   note: string;
 }) {
   return (
@@ -354,6 +505,11 @@ function InstallCard({
               {step.detail && (
                 <span className="block text-zinc-500">{step.detail}</span>
               )}
+              {step.code && (
+                <code className="mt-1.5 block overflow-x-auto whitespace-nowrap rounded-lg border border-white/[0.07] bg-black/40 px-3 py-2 font-mono text-[12px] text-[#a5b0ff]">
+                  {step.code}
+                </code>
+              )}
             </span>
           </li>
         ))}
@@ -381,7 +537,12 @@ export function InstallSection() {
             platform="windows"
             title="Windows"
             icon={
-              <svg viewBox="0 0 24 24" fill="currentColor" className="size-5" aria-hidden>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-5"
+                aria-hidden
+              >
                 <path d="M3 5.7 10.3 4.6v6.6H3V5.7Zm0 12.6 7.3 1.1V12.7H3v5.6Zm8.4 1.36L21 20.9V12.7h-9.6v7.02ZM11.4 4.08 21 3.1V11.7h-9.6V4.08Z" />
               </svg>
             }
@@ -392,7 +553,8 @@ export function InstallSection() {
                 ? []
                 : [
                     {
-                      label: "If SmartScreen appears, choose “More info → Run anyway”",
+                      label:
+                        "If SmartScreen appears, choose “More info → Run anyway”",
                       detail: "This is expected for an unsigned beta build.",
                     },
                   ]),
@@ -409,7 +571,12 @@ export function InstallSection() {
             platform="mac"
             title="macOS"
             icon={
-              <svg viewBox="0 0 24 24" fill="currentColor" className="size-5" aria-hidden>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-5"
+                aria-hidden
+              >
                 <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.9-1.5-.1-2.9.9-3.6.9-.7 0-1.8-.9-3-.9-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.2 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3.1-.7s1.8.7 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.9ZM14.2 5.6c.6-.8 1-1.9.9-3-.9 0-2 .6-2.6 1.4-.6.6-1.1 1.7-.9 2.7 1 .1 2-.4 2.6-1.1Z" />
               </svg>
             }
@@ -417,19 +584,18 @@ export function InstallSection() {
               { label: "Download the .dmg" },
               { label: "Open it" },
               { label: "Drag ClipNote into Applications" },
-              ...(siteConfig.macNotarized
-                ? []
-                : [
-                    {
-                      label: "First launch: right-click the app → Open",
-                      detail: "Gatekeeper may block an unsigned app the first time.",
-                    },
-                  ]),
+              {
+                label: "Remove the quarantine flag",
+                detail:
+                  "Run this in Terminal so macOS allows the unsigned beta build to launch.",
+                code: "xattr -dr com.apple.quarantine /Applications/ClipNote.app",
+              },
+              { label: "Open ClipNote" },
             ]}
             note={
               siteConfig.macNotarized
                 ? "This build is notarized for macOS."
-                : "This beta build isn’t notarized yet. On first launch, right-click the app and choose “Open” if Gatekeeper blocks it."
+                : "This beta build isn’t notarized yet. If Gatekeeper still blocks it after the command, right-click ClipNote and choose “Open”."
             }
           />
         </div>

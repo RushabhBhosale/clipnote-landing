@@ -5,6 +5,7 @@ import {
   FeaturesSection,
   InstallSection,
   PrivacySection,
+  ShortcutsSection,
   SiteFooter,
   WorkflowSection,
 } from "@/components/sections";
@@ -20,6 +21,7 @@ export default function Home() {
         <WorkflowSection />
         <PrivacySection />
         <FeaturesSection />
+        <ShortcutsSection />
         <InstallSection />
         <BetaSection />
       </main>
