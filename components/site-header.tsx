@@ -7,9 +7,9 @@ import { Logo } from "@/components/logo";
 import { siteConfig } from "@/lib/site-config";
 
 const NAV = [
-  { href: "#features", label: "Features" },
-  { href: "#privacy", label: "Privacy" },
-  { href: "#download", label: "Download" },
+  { href: "/#features", label: "Features" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/#download", label: "Download" },
 ];
 
 export function SiteHeader() {

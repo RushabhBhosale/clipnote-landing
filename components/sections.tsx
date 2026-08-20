@@ -503,8 +503,8 @@ export function SiteFooter() {
               GitHub
             </a>
           )}
-          <a href="#privacy" className="transition-colors hover:text-zinc-200">
-            Privacy
+          <a href="/privacy" className="transition-colors hover:text-zinc-200">
+            Privacy Policy
           </a>
           {siteConfig.feedback && (
             <a
