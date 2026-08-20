@@ -14,7 +14,11 @@ export const siteConfig = {
   windowsSigned: false,
   macNotarized: false,
 
+  // Contact & support --------------------------------------------------------
+  supportEmail: "rushabhbhosale25757@gmail.com",
+  supportPhone: "+91 91379 96317",
+
   // External links -----------------------------------------------------------
   github: "",
-  feedback: "",
+  feedback: "mailto:rushabhbhosale25757@gmail.com",
 } as const;

@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 const NAV = [
   { href: "/#features", label: "Features" },
   { href: "/privacy", label: "Privacy" },
+  { href: "/support", label: "Support" },
   { href: "/#download", label: "Download" },
 ];
 

@@ -441,7 +441,7 @@ export function InstallSection() {
 /* ---------------- Beta ---------------- */
 
 export function BetaSection() {
-  const hasFeedback = siteConfig.feedback.length > 0;
+  const href = siteConfig.feedback || "/support";
 
   return (
     <section className="border-b border-white/[0.06] py-24">
@@ -458,22 +458,12 @@ export function BetaSection() {
             about pricing. If it saves you time every day, that&apos;s the goal.
           </p>
           <div className="mt-8">
-            {hasFeedback ? (
-              <a
-                href={siteConfig.feedback}
-                className="inline-flex h-11 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 text-sm font-medium text-zinc-100 transition-colors hover:border-white/20 hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a5b0ff]/60"
-              >
-                Send Feedback
-              </a>
-            ) : (
-              <span
-                aria-disabled="true"
-                title="Feedback link not configured yet"
-                className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-5 text-sm font-medium text-zinc-500"
-              >
-                Send Feedback
-              </span>
-            )}
+            <a
+              href={href}
+              className="inline-flex h-11 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 text-sm font-medium text-zinc-100 transition-colors hover:border-white/20 hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a5b0ff]/60"
+            >
+              Send Feedback
+            </a>
           </div>
         </div>
       </div>
@@ -505,6 +495,9 @@ export function SiteFooter() {
           )}
           <a href="/privacy" className="transition-colors hover:text-zinc-200">
             Privacy Policy
+          </a>
+          <a href="/support" className="transition-colors hover:text-zinc-200">
+            Support
           </a>
           {siteConfig.feedback && (
             <a
